@@ -1,0 +1,60 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+logs/
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Build outputs
+dist/
+build/
+out/
+tmp/
+temp/
+.cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Tests
+jest-html-reporters-*.html
+test-results/
+
+# Uploaded files (if any)
+uploads/
+public/uploads/
+
+# Misc
+*.tgz
+.nyc_output/

@@ -1,0 +1,60 @@
+✅ pages
+1) Homepage ✅
+2) shorts ✅
+3) History (feed/history) ✅ 
+4) subscription (fedd/channels) ✅
+5) playlist (feed/playlist) ✅
+6) Notify me (feed/ notifyme) ✅
+7) settings (account) ✅
+6) Help (account/ privacy)✅
+7) send feedback ✅
+8) payment ✅
+9) signup/signin/forgetpassword
+11) creater account ✅
+12) watch ✅ 
+13) shorts ✅
+14) your profile (profile detauils/playlist, customization)✅
+15) your studio / (create/ stream),(dashboard),(analytics)✅
+16) purchase/membership (account/) ✅
+
+# ✅features
+2) auth
+3) resume -sync
+4) infinite scroll
+5) tooltip-sidenav
+6) sidenav, models,dropdown
+7) straming reminder / schudle straming
+8) upload/ straming video (for upload verify )
+
+
+
+# library using
+1) clsx
+2) tailwind merge
+3) lucide-react
+4) class-variance-authority
+5) carsoule
+6) ract-day-picker
+7) rechats
+8) radix-ui 
+
+
+# function
+1) use-mobile
+2) authprovider(js cookie) 
+
+
+├── app/              # All your Next.js routes (pages, layouts, etc.)
+│
+├── components/       # Reusable UI and page components
+│   ├── Homepage/     # Components related to the home page only
+│   ├── layout/       # Navbar, Footer, Sidebar, etc.
+│   └── ui/           # Reusable UI elements (buttons, cards, inputs, etc.)
+│
+├── data/             # Static data, mock data, constants, or JSON files
+│
+├── hooks/            # Custom React hooks ( auth hook, apicall hook, darkmode hookm use toggle, useDebounce, uselocalstorage, usewindowsize, useOnlinestatus, useCopytoClipboard, usePathname, useQueryPaparms, useOptimisitcState, useInfinateScroll, useeventListiner,useInterval, useCahce,useWebSocket, useAsync, useDebouncedCallback)
+│
+├── lib/              # Utility/helper functions (API calls, formatters, etc.)
+│
+└── redux/            # Redux store setup and slices
