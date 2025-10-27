@@ -1,9 +1,13 @@
+"use client"
 import React from 'react'
 import ShortsList from './ShortsList'
 import { timeAgo } from '../../lib/timeConversion'
 import HoverVideo from './hoverPlay'
 import { Button } from '../ui/button'
 import { EllipsisVertical } from 'lucide-react'
+import { useAppSelector } from "../../redux/hooks";
+import { Dropdown, DropdownTrigger } from '../ui/dropdown'
+import VideoSaveOption from './videoSaveOption'
 const VideosList = () => {
     const data = [
         {
@@ -147,11 +151,11 @@ const VideosList = () => {
     ];
     const videosOne = data.slice(0, 6); // first 6 videos
     const videostwo = data.slice(6); // first 6 videos
-
+    const activeCategory = useAppSelector((state) => state.quickFilter.activeCategory);
     return (
         <div className='w-full h-auto grid  md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-2 mt-5'>
             {videosOne.map((i) => (
-                <div key={i.id} className='w-full p-2 h-auto hover:bg-[var(--surface)] transition ease-linear duration-150 cursor-pointer  rounded-xl'>
+                <div key={i.id} className='w-full  p-2 h-auto hover:bg-[var(--surface)] transition ease-linear duration-150 cursor-pointer  rounded-xl'>
                     {/* <img alt='thumbnailUrl' className='w-full   h-auto rounded-xl' width={200} src={i.thumbnailUrl} /> */}
                     <HoverVideo hoverPreviewUrl={i.hoverPreviewUrl} thumbnailUrl={i.thumbnailUrl} duration={i.duration} />
 
@@ -171,9 +175,14 @@ const VideosList = () => {
                             </div>
                         </div>
                         <div className='w-11 h-auto '>
-                            <Button className='cursor-pointer w-10  h-10 rounded-full'>
-                                <EllipsisVertical size={24} className='text-white' />
-                            </Button>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <Button className='cursor-pointer w-10  h-10 rounded-full'>
+                                        <EllipsisVertical size={24} className='text-white' />
+                                    </Button>
+                                </DropdownTrigger>
+                                <VideoSaveOption />
+                            </Dropdown>
                         </div>
                     </div>
                 </div>
@@ -200,9 +209,15 @@ const VideosList = () => {
                             </div>
                         </div>
                         <div className='w-11 h-auto '>
-                            <Button className='cursor-pointer w-10  h-10 rounded-full'>
-                                <EllipsisVertical size={24} className='text-white' />
-                            </Button>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <Button className='cursor-pointer w-10  h-10 rounded-full'>
+                                        <EllipsisVertical size={24} className='text-white' />
+                                    </Button>
+                                </DropdownTrigger>
+                                <VideoSaveOption />
+                            </Dropdown>
+
                         </div>
                     </div>
                 </div>

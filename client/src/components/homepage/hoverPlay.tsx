@@ -64,7 +64,7 @@ export default function HoverVideo({ thumbnailUrl, duration, hoverPreviewUrl }: 
 
     return (
         <div
-            className="w-full h-auto rounded-xl overflow-hidden cursor-pointer bg-black"
+            className="w-full   h-auto rounded-xl  cursor-pointer bg-black"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
@@ -74,7 +74,7 @@ export default function HoverVideo({ thumbnailUrl, duration, hoverPreviewUrl }: 
                     <img
                         src={thumbnailUrl}
                         alt="Thumbnail"
-                        className="w-full aspect-video object-cover rounded-xl transition-opacity duration-300"
+                        className="w-full   aspect-video object-cover rounded-xl transition-opacity duration-300"
                     />
                 )}
 
@@ -83,6 +83,7 @@ export default function HoverVideo({ thumbnailUrl, duration, hoverPreviewUrl }: 
                     <video
                         ref={videoRef}
                         src={hoverPreviewUrl}
+                        poster={thumbnailUrl}
                         muted
                         loop
                         playsInline

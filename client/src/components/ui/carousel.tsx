@@ -1,23 +1,23 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Button } from "./button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const categories = [
-    "All", "Music", "Thrillers", "Tamil Cinema", "Sports", "Comedy", "Gaming", "Live", "Podcasts", "Drama", "Recently Uploaded",
-    "Music", "Thrillers", "Tamil Cinema", "Sports", "Comedy", "Gaming", "Live", "Podcasts", "Drama", "Recently Uploaded",
-];
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { setActiveCategory } from "../../redux/slices/QuickFilter";
 
 interface CarouselProps {
     width: number;
+    categories: string[];
 }
 
-const Carousel: React.FC<CarouselProps> = ({ width }) => {
+const Carousel: React.FC<CarouselProps> = ({ width, categories }) => {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [showLeft, setShowLeft] = useState(false);
-    const [showRight, setShowRight] = useState(false);
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [showLeft, setShowLeft] = React.useState(false);
+    const [showRight, setShowRight] = React.useState(false);
+
+    const dispatch = useAppDispatch();
+    const activeCategory = useAppSelector((state) => state.quickFilter.activeCategory);
 
     const handleScroll = () => {
         const el = scrollRef.current;
@@ -48,7 +48,7 @@ const Carousel: React.FC<CarouselProps> = ({ width }) => {
             scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
     };
-
+    console.log(activeCategory)
     return (
         <div className="relative w-full">
             {/* Left Arrow */}
@@ -71,7 +71,7 @@ const Carousel: React.FC<CarouselProps> = ({ width }) => {
                     return (
                         <button
                             key={`${category}-${index}`}
-                            onClick={() => setActiveCategory(category)}
+                            onClick={() => dispatch(setActiveCategory(category))}
                             className={`whitespace-nowrap rounded-xl px-4 cursor-pointer h-9 flex items-center justify-center font-medium text-[15px] transition-all duration-200
                                 ${isActive
                                     ? "bg-white text-black"

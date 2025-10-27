@@ -69,7 +69,7 @@ const DropdownItem = React.forwardRef<
     <DropdownMenu.Item
         ref={ref}
         className={cn(
-            " text-white rounded-lg   cursor-pointer select-none hover:bg-[var(--foreground)]",
+            " text-white rounded-lg my-1  cursor-pointer select-none hover:bg-[var(--foreground)]",
             className
         )}
         {...props}

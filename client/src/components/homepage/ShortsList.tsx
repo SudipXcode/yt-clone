@@ -8,7 +8,7 @@ const HoverVideo = ({ videoUrl, title }) => {
     const videoRef = React.useRef(null)
 
     return (
-        <div className='w-full mt-6 h-auto  rounded-lg overflow-hidden   cursor-pointer'>
+        <div className='w-full  mt-6 h-auto  rounded-lg overflow-hidden   cursor-pointer'>
             <div className='w-full aspect-9/16 '>
                 <video
                     ref={videoRef}

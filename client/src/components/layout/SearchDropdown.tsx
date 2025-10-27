@@ -2,7 +2,7 @@ import React from 'react'
 import { History, X } from "lucide-react";
 import Thumbnail from '../../../public/mqdefault.jpg'
 import Image from "next/image";
-const SearchDropdown = () => {
+const SearchDropdown = ({ results, onSelect }) => {
     const data = [
         {
             id: 1,
@@ -81,12 +81,14 @@ const SearchDropdown = () => {
         },
     ];
 
-
-
+    const dataResult =
+        Array.isArray(results) && results.length > 0
+            ? [...results, ...data]
+            : data;
     return (
         <div className="w-full  h-auto p-3 bg-[var(--surface)] absolute top-[45px] rounded-2xl flex flex-col  shadow-lg z-50">
-            {data.map((data) => (
-                <div key={data.id} className="w-full group py-2 px-3 cursor-pointer   hover:bg-[var(--foreground)] transition ease-linear duration-200 rounded-2xl h-auto flex items-center justify-between">
+            {dataResult.slice(0, 15).map((data, i) => (
+                <div onClick={() => onSelect(data.title)} key={i} className="w-full group py-2 px-3 cursor-pointer   hover:bg-[var(--foreground)] transition ease-linear duration-200 rounded-2xl h-auto flex items-center justify-between">
                     <div className="w-[50px] h-auto">
                         <History className="text-white" size={24} />
                     </div>

@@ -21,13 +21,40 @@ export default function ResizableDiv() {
 
         return () => observer.disconnect();
     }, []);
-
+    const categories = [
+        "All",
+        "Music",
+        "Thrillers",
+        "Tamil Cinema",
+        "Sports",
+        "Comedy",
+        "Gaming",
+        "Live",
+        "Podcasts",
+        "Drama",
+        "Recently Uploaded",
+        "News",
+        "Shorts",
+        "Technology",
+        "Education",
+        "Travel",
+        "Movies",
+        "Fashion",
+        "Fitness",
+        "Cooking",
+        "Animation",
+        "Science",
+        "DIY",
+        "Art",
+        "Lifestyle",
+        "Motivation"
+    ];
     return (
         <div
             ref={divRef}
             className='w-full  h-auto '
         >
-            <Carousel width={width} />
+            <Carousel width={width} categories={categories} />
         </div>
 
 

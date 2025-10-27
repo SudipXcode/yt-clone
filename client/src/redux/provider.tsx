@@ -9,23 +9,25 @@ export function ReduxProvider({ children }: { children: React.ReactNode }) {
     const [hydrated, setHydrated] = useState(false);
 
     useEffect(() => {
-        // ✅ Run only on client
         try {
-            const saved = localStorage.getItem("sidenavState");
+            // ✅ Load saved sidenav state from localStorage
+            const saved = localStorage.getItem("reduxState");
 
             if (saved) {
-                const { isOpen } = JSON.parse(saved);
-                if (isOpen) store.dispatch(openSidenav());
-                else store.dispatch(closeSidenav());
+                const parsed = JSON.parse(saved);
+                if (parsed.sidenav?.isOpen) {
+                    store.dispatch(openSidenav());
+                } else {
+                    store.dispatch(closeSidenav());
+                }
             }
 
-            // ✅ Save Redux state on every change
+            // ✅ Save only sidenav state on every store update
             const unsubscribe = store.subscribe(() => {
-                const state = store.getState().sidenav;
-                localStorage.setItem("sidenavState", JSON.stringify(state));
+                const { sidenav } = store.getState();
+                localStorage.setItem("reduxState", JSON.stringify({ sidenav }));
             });
 
-            // ✅ Mark hydration complete
             setHydrated(true);
 
             return unsubscribe;
@@ -35,10 +37,7 @@ export function ReduxProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     // 🧠 Prevent hydration mismatch
-    if (!hydrated) {
-        // You can return `null` or a small loader here
-        return null;
-    }
+    if (!hydrated) return null;
 
     return <Provider store={store}>{children}</Provider>;
 }
